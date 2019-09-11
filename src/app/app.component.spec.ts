@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'placeholder'`, () => {
+  it(`should have as title 'placeloader'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('placeholder');
+    expect(app.title).toEqual('placeloader');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('placeholder app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('placeloader app is running!');
   });
 });

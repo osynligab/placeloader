@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('placeholder app is running!');
+    expect(page.getTitleText()).toEqual('placeloader app is running!');
   });
 
   afterEach(async () => {
