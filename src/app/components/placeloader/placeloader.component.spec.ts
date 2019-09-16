@@ -1,25 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlaceloaderComponent } from './placeloader.component';
+import { Config } from './placeloader.config';
 
 describe('PlaceloaderComponent', () => {
   let component: PlaceloaderComponent;
   let fixture: ComponentFixture<PlaceloaderComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PlaceloaderComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PlaceloaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should load svg template', () => {
+    expect(component.speed).toBe(Config.Speed);
+    expect(component.primaryColor).toBe(Config.PrimaryColor);
+    expect(component.secondaryColor).toBe(Config.SecondaryColor);
+  })
 });
