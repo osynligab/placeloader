@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PlaceloaderComponent } from './placeloader.component';
@@ -18,7 +18,8 @@ import { ListTheme } from './themes/list.theme';
     PlaceloaderComponent,
     ContentTheme,
     ListTheme
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PlaceloaderModule {
   static forRoot(): ModuleWithProviders {

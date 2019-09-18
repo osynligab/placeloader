@@ -24,7 +24,7 @@ export class PlaceloaderComponent implements OnInit {
   public primaryColor = Config.PrimaryColor;
 
   /** Secondary color  */
-   secondaryColor: any;
+   secondaryColor: string;
    colors: any;
 
 

@@ -1,15 +1,72 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  async,
+  TestBed,
+  inject,
+  TestComponentRenderer
+} from '@angular/core/testing';
 
 import { PlaceloaderComponent } from './placeloader.component';
 import { Config } from './placeloader.config';
+import { ExpectedConditions } from 'protractor';
+
 
 describe('PlaceloaderComponent', () => {
-  let component: PlaceloaderComponent;
-  let fixture: ComponentFixture<PlaceloaderComponent>;
 
-  it('should load svg template', () => {
-    expect(component.speed).toBe(Config.Speed);
-    expect(component.primaryColor).toBe(Config.PrimaryColor);
-    expect(component.secondaryColor).toBe(Config.SecondaryColor);
-  })
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        PlaceloaderComponent
+      ],
+    }).compileComponents();
+  }));
+
+  describe(`initialization`, () => {
+    it(`should instantiate placeloader component`, async(() => {
+      const fixture = TestBed.createComponent(PlaceloaderComponent);
+      const comp = fixture.debugElement.componentInstance;
+
+      expect(comp).toBeDefined();
+    }));
+  });
+
+  describe(`PlaceloaderComponent functionality`, () => {
+    describe(`PlaceloaderComponent props should be defined`, () => {
+      it(`component prop (speed) is set`, async(() => {
+        const fixture = TestBed.createComponent(PlaceloaderComponent);
+        const comp = fixture.debugElement.componentInstance;
+
+        expect(comp.speed).toBeDefined();
+      }));
+
+      it(`component prop (primaryColor) should be set`, async(() => {
+        const fixture = TestBed.createComponent(PlaceloaderComponent);
+        const comp = fixture.debugElement.componentInstance;
+
+        expect(comp.primaryColor).toBeDefined();
+      }));
+
+      it(`component prop (config) should be set`, async(() => {
+        const fixture = TestBed.createComponent(PlaceloaderComponent);
+        const comp = fixture.debugElement.componentInstance;
+
+        expect(comp.config).toBeDefined();
+      }));
+
+      it(`component prop (secondaryColor) should NOT be set`, async(() => {
+        const fixture = TestBed.createComponent(PlaceloaderComponent);
+        const comp = fixture.debugElement.componentInstance;
+
+        expect(comp.secondaryColor).toBeUndefined();
+      }));
+    });
+
+    it(`should render SVG element and template tag [content]`, async(() => {
+      const fixture = TestBed.createComponent(PlaceloaderComponent);
+      fixture.detectChanges();
+
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('svg')).toBeDefined();
+      expect(compiled.querySelector('[content]')).toBeDefined();
+    }));
+  });
 });
