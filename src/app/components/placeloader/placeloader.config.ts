@@ -1,7 +1,7 @@
 export enum Config {
-    Type = 'content',
     Speed = '1200',
     PrimaryColor = '#f5f5f5',
-    SecondaryColor = '#e5e5e5',
-    PreserveRatio = 'xMidYMid meet'
+    SecondaryColor = '#f7f7f7',
+    PreserveRatio = 'xMidYMid meet',
+    ViewBox = '0 0 100 100'
 }
