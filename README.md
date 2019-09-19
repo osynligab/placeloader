@@ -3,20 +3,12 @@
 
 # Placeloader
 
-Simple but effective content loader (placeloader) instead of a spinner we show the content-is grayed out.  
-
-## Development server
-
-  
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-
+A small collection of customizable SVG components to create placeholder loading indicators instead of spinner, like cards loading.
 
 ## Install
 ### npm
 ```
-npm install os-placeloader --save
+npm install @osynlig/os-placeloader --save
 ```
 ### How to use  
 

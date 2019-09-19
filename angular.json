@@ -124,6 +124,41 @@
           }
         }
       }
+    },
+    "os-placeloader": {
+      "projectType": "library",
+      "root": "projects/os-placeloader",
+      "sourceRoot": "projects/os-placeloader/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/os-placeloader/tsconfig.lib.json",
+            "project": "projects/os-placeloader/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/os-placeloader/src/test.ts",
+            "tsConfig": "projects/os-placeloader/tsconfig.spec.json",
+            "karmaConfig": "projects/os-placeloader/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/os-placeloader/tsconfig.lib.json",
+              "projects/os-placeloader/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "placeloader"
 }
