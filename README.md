@@ -3,13 +3,7 @@
 
 # Placeloader
 
-  
-
-  
-
-This project was built by [Osynlig](https://osynlig.se) with **love** and [Angular CLI](https://github.com/angular/angular-cli) version 8.3.1.
-
-  
+Simple but effective content loader (placeloader) instead of a spinner we show the content-is grayed out.  
 
 ## Development server
 
