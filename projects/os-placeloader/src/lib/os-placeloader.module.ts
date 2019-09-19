@@ -2,8 +2,10 @@ import { ModuleWithProviders, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/
 import { CommonModule } from '@angular/common';
 
 import { PlaceloaderComponent } from './os-placeloader.component';
+import { FacebookTheme } from './themes/facebook.theme';
 import { ContentTheme } from './themes/content.theme';
 import { ListTheme } from './themes/list.theme';
+import { CodeTheme } from './themes/code.theme';
 
 @NgModule({
   imports: [
@@ -11,13 +13,17 @@ import { ListTheme } from './themes/list.theme';
   ],
   declarations: [
     PlaceloaderComponent,
+    FacebookTheme,
     ContentTheme,
-    ListTheme
+    ListTheme,
+    CodeTheme
   ],
   exports: [
     PlaceloaderComponent,
+    FacebookTheme,
     ContentTheme,
-    ListTheme
+    ListTheme,
+    CodeTheme
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

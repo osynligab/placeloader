@@ -39,6 +39,7 @@ export class PlaceloaderComponent implements OnInit {
    */
   ngOnInit() {
     this.secondaryColor = this.createSecondaryColor(this.primaryColor, 18).toString();
+
     // our color loop
     this.colors = `${this.secondaryColor};${this.primaryColor};${this.secondaryColor}`;
   }

@@ -5,8 +5,8 @@ import {
   TestComponentRenderer
 } from '@angular/core/testing';
 
-import { PlaceloaderComponent } from './placeloader.component';
-import { Config } from './placeloader.config';
+import { PlaceloaderComponent } from './os-placeloader.component';
+import { Config } from './os-placeloader.config';
 import { ExpectedConditions } from 'protractor';
 
 

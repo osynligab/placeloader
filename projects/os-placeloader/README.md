@@ -11,7 +11,7 @@ npm i @osynlig/os-placeloader --save
 ```
 ### How to use
 ```javascript
-import  {  PlaceloaderModule  }  from  'os-placeloader';
+import  {  PlaceloaderModule  }  from  '@osynlig/os-placeloader';
 
 @NgModule({
 	imports: [
@@ -39,7 +39,9 @@ import  {  PlaceloaderModule  }  from  'os-placeloader';
 
 #### Presets (at the moment...)
     - content
-    - list  
+	- facebook
+    - list
+	- code
 
 ## Properties
 

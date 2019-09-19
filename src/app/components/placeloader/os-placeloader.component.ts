@@ -5,12 +5,12 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
-import { Config } from './placeloader.config';
+import { Config } from './os-placeloader.config';
 
 @Component({
   selector: 'os-placeloader',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './placeloader.component.html'
+  templateUrl: './os-placeloader.component.html'
 })
 
 export class PlaceloaderComponent implements OnInit {

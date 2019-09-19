@@ -1,7 +1,7 @@
 import { ModuleWithProviders, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PlaceloaderComponent } from './placeloader.component';
+import { PlaceloaderComponent } from './os-placeloader.component';
 import { FacebookTheme } from './themes/facebook.theme';
 import { ContentTheme } from './themes/content.theme';
 import { ListTheme } from './themes/list.theme';
