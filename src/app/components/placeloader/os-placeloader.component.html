@@ -1,7 +1,7 @@
 <ng-content select="[before-svg"></ng-content>
 <svg version="1.1" [attr.preserveAspectRatio]="config.PreserveRatio" [attr.viewBox]="config.ViewBox">
   <defs>
-    <linearGradient id="gradient" spreadMethod="reflect" x1="-100%" y1="0" x2="200%" y2="0"
+    <linearGradient id="os-g1" spreadMethod="reflect" x1="-100%" y1="0" x2="200%" y2="0"
       gradientTransform="rotate(0)">
       <stop offset="0" [attr.stop-color]="primaryColor" stop.opactiy="0.75">
         <animate attributeName="stop-color" [attr.values]="colors" [attr.dur]="speed+'ms'" repeatCount="indefinite"
@@ -14,7 +14,7 @@
       </stop>
     </linearGradient>
   </defs>
-  <g fill="url(#gradient)">
+  <g fill="url(#os-g1)">
     <ng-content></ng-content>
   </g>
 </svg>
