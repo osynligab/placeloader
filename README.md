@@ -14,7 +14,7 @@ npm install @osynlig/os-placeloader --save
 
 import (app.module.ts)
 ```
-import  {  PlaceloaderModule  }  from  './components/placeloader/placeloader.module';
+import  {  PlaceloaderModule  }  from  'os-placeloader';
 
 imports: [
 	...
