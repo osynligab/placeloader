@@ -23,11 +23,21 @@ export class PlaceloaderComponent implements OnInit {
   @Input()
   public primaryColor = Config.PrimaryColor;
 
+  /** Height */
+  @Input()
+  public height = Config.Height;
+
+  /** Width */
+  @Input()
+  public width = Config.Width;
+
   /** Secondary color  */
-   secondaryColor: string;
-   colors: any;
+  public secondaryColor;  
 
+  /** gradientId */
+  public gradientId = generateId();
 
+  colors;
   config = Config;
   /**
    * Constructor
@@ -39,7 +49,6 @@ export class PlaceloaderComponent implements OnInit {
    */
   ngOnInit() {
     this.secondaryColor = this.createSecondaryColor(this.primaryColor, 18).toString();
-
     // our color loop
     this.colors = `${this.secondaryColor};${this.primaryColor};${this.secondaryColor}`;
   }
@@ -67,4 +76,17 @@ export class PlaceloaderComponent implements OnInit {
 
     return `#${RR}${GG}${BB}`;
   }
+
+  get viewBox(): string {
+    const height: number = (this.height as any) / 2;
+    const width: number = (this.width as any) / 2;
+
+    return `0 0 ${width} ${height}`;
+  }
+}
+
+export function generateId() {
+  const id = Math.floor(Math.random() * 100) + 1;
+
+  return `os-fill-${id.toString()}`;
 }

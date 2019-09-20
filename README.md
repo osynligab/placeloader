@@ -21,7 +21,7 @@ import  {  PlaceloaderModule  }  from  '@osynlig/os-placeloader';
 
 ```
 ```html
-<os-placeloader speed="2200" primaryColor="#dcddde">
+<os-placeloader speed="2200" primaryColor="#dcddde" height="320">
 	<svg:g  content></svg:g>
 </os-placeloader>
 
@@ -49,6 +49,8 @@ import  {  PlaceloaderModule  }  from  '@osynlig/os-placeloader';
 |--|--|--|--|
 | **speed** | number | `1200` | animation speed |
 | **primaryColor** | string | `#dcddde` | placeloader color **must be in #hex value** |
+| **width** | number | `320` | width of the placeloader |
+| **height** | number | `100` | height of the placeloader |
 
 ## Development
 
