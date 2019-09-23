@@ -1,7 +1,7 @@
 export enum Config {
-    Speed = '1200',
+    Speed = 1200,
+    Height = 100,
+    Width = 100,
     PrimaryColor = '#f5f5f5',
-    SecondaryColor = '#f7f7f7',
-    PreserveRatio = 'xMidYMid meet',
-    ViewBox = '0 0 100 100'
+    PreserveRatio = 'xMidYMid meet'
 }

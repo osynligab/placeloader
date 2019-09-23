@@ -1,6 +1,6 @@
 {
   "name": "@osynlig/os-placeloader",
-  "version": "1.0.10",
+  "version": "0.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,6 +9,29 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angular 6",
+    "loader",
+    "content loader",
+    "facebook loading",
+    "instagram loading",
+    "loading",
+    "cards loading",
+    "svg loaders"
+  ],
+  "author": {
+    "name": "osynlig"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osynligab/placeloader"
+  },
+  "bugs": {
+    "url": "https://github.com/osynligab/placeloader/issues"
+  },
+  "homepage": "https://github.com/osynligab/placeloader",
   "private": false,
   "dependencies": {
     "@angular/animations": "~8.2.3",

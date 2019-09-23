@@ -3,7 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PlaceloaderModule } from './components/placeloader/os-placeloader.module';
+import { PlaceloaderModule } from '../../projects/os-placeloader/src/lib/os-placeloader.module';
 // import { PlaceloaderModule } from '@osynlig/os-placeloader';
 
 @NgModule({

@@ -7,14 +7,17 @@ import {
 @Component({
   selector: '[list]',
   template: `
-  <svg:rect x="0" y="0" rx="2" ry="2" width="4" height="4"></svg:rect>
-  <svg:rect x="10" y="0.5" rx="2" ry="2" width="80" height="3"></svg:rect>
-  <svg:rect x="0" y="8" rx="2" ry="2" width="4" height="4"></svg:rect>
-  <svg:rect x="10" y="8.5" rx="2" ry="2" width="80" height="3"></svg:rect>
-  <svg:rect x="0" y="16" rx="2" ry="2" width="4" height="4"></svg:rect>
-  <svg:rect x="10" y="16.5" rx="2" ry="2" width="80" height="3"></svg:rect>
-  <svg:rect x="0" y="24" rx="2" ry="2" width="4" height="4"></svg:rect>
-  <svg:rect x="10" y="24.5" rx="2" ry="2" width="80" height="3"></svg:rect>
+  <svg:circle cx="7" cy="7" r="6"></svg:circle>
+  <svg:rect x="20" y="4" rx="2" ry="2" width="120" height="5"></svg:rect>
+
+  <svg:circle cx="7" cy="22" r="6"></svg:circle>
+  <svg:rect x="20" y="19.5" rx="2" ry="2" width="110" height="5"></svg:rect>
+
+  <svg:circle cx="7" cy="37" r="6"></svg:circle>
+  <svg:rect x="20" y="34.5" rx="2" ry="2" width="120" height="5"></svg:rect>
+  
+  <svg:circle cx="7" cy="52" r="6"></svg:circle>
+  <svg:rect x="20" y="49.5" rx="2" ry="2" width="110" height="5"></svg:rect>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
