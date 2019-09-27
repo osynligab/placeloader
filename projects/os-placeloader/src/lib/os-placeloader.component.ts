@@ -54,9 +54,7 @@ export class PlaceloaderComponent implements OnInit {
 
     this.secondaryColor = ColorConversion.createSecondaryColor(color);
     // our color loop
-    this.colors = `${this.secondaryColor};${color};${this.secondaryColor}`;
-
-    console.log(this.colors);
+    this.colors = `${this.secondaryColor};${color};${this.secondaryColor}`; 
   }
 
   get viewBox(): string {
