@@ -23,8 +23,7 @@ export class ColorConversion {
     const HSL = /^hsl\(((((([12]?[1-9]?\d)|[12]0\d|(3[0-5]\d))(\.\d+)?)|(\.\d+))(deg)?|(0|0?\.\d+)turn|(([0-6](\.\d+)?)|(\.\d+))rad)((,\s?(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2}|(\s(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2})\)$/i;
     // tslint:disable-next-line: max-line-length
     const HSLA = /^hsla\(((((([12]?[1-9]?\d)|[12]0\d|(3[0-5]\d))(\.\d+)?)|(\.\d+))(deg)?|(0|0?\.\d+)turn|(([0-6](\.\d+)?)|(\.\d+))rad)(((,\s?(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2},\s?)|((\s(([1-9]?\d(\.\d+)?)|100|(\.\d+))%){2}\s\/\s))((0?\.\d+)|[01]|(([1-9]?\d(\.\d+)?)|100|(\.\d+))%)\)$/i;
-    const HEX = /^#([\da-f]{3}){1,2}$/i;
-    const HEXA = /^#([\da-f]{4}){1,2}$/i;
+    const HEX = /^#([\da-f]{3}){1,2}$/i;    
 
 
     if (RGB.test(color)) {
@@ -45,8 +44,8 @@ export class ColorConversion {
 
   // create secondary color to use within the animation
   static createSecondaryColor(color) {
-    console.log('secondary color', color);
-    return color;
+    const [r, g, b, a] = color.match(/[.?\d]+/g).map(x => +x); 
+    return this.RGBToRGBA(color, +(a >= 0.5 ? a - 0.63 : a + 0.63).toFixed(2));
   }
 
   static RGBToRGBA(color, alpha = 1) {

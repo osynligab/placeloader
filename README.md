@@ -21,26 +21,27 @@ import  {  PlaceloaderModule  }  from  '@osynlig/os-placeloader';
 
 ```
 ```html
-<os-placeloader speed="2200" primaryColor="#dcddde" height="320">
-	<svg:g  content></svg:g>
-</os-placeloader>
+  <os-placeloader speed="2200" primaryColor="rgb(220, 221, 222)" height="74" width="399">
+    <svg:g code></svg:g>
+  </os-placeloader>
 
-<os-placeloader speed="500" primaryColor="#ff00ff">
-	<svg:g  list></svg:g>
-</os-placeloader>
+  <os-placeloader speed="2200" primaryColor="#dcddde" height="157" width="399">
+    <svg:g facebook></svg:g>
+  </os-placeloader>
 
-<os-placeloader speed="500" primaryColor="#ff00ff">
-	<svg:rect x="0" y="5" rx="10" ry="10" width="15" height="15"></svg:rect>
-	<svg:rect x="20" y="5" rx="2" ry="2" width="50" height="4"></svg:rect>´
-	<svg:rect x="20" y="10" rx="2" ry="2" width="70" height="4"></svg:rect>
-	<svg:rect x="20" y="15" rx="2" ry="2" width="30" height="4"></svg:rect>
-</os-placeloader>
+  <os-placeloader speed="2200" primaryColor="#dcddde" height="120" width="399">
+    <svg:g content></svg:g>
+  </os-placeloader>
+
+  <os-placeloader speed="2200" primaryColor="#dcddde" height="124" width="399">
+    <svg:g list></svg:g>
+  </os-placeloader>
 ```
 
 #### Presets (at the moment...)
-    - content
+  - content
 	- facebook
-    - list
+  - list
 	- code
 
 ## Properties
@@ -48,7 +49,7 @@ import  {  PlaceloaderModule  }  from  '@osynlig/os-placeloader';
 | | |  | |
 |--|--|--|--|
 | **speed** | number | `1200` | animation speed |
-| **primaryColor** | string | `#dcddde` | placeloader color **must be in #hex value** |
+| **primaryColor** | string | `#dcddde` | placeloader color can be in rgb(), rgba(), hsl(), hsla() or #hex |
 | **width** | number | `320` | width of the placeloader |
 | **height** | number | `100` | height of the placeloader |
 
