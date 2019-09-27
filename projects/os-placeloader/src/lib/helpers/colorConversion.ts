@@ -1,6 +1,6 @@
 /**
  * Color conversion
- * Always return either RGB or RGBA
+ * Always return RGBA
  *
  * @param color - color input
  * @return color - color output
@@ -14,7 +14,7 @@ export class ColorConversion {
   constructor() {
   }
 
-  static calculate(color) {
+  static calculate(color, alpha = 1) {
     // tslint:disable-next-line: max-line-length
     const RGB = /^rgb\((((((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]),\s?)){2}|((((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5])\s)){2})((1?[1-9]?\d)|10\d|(2[0-4]\d)|25[0-5]))|((((([1-9]?\d(\.\d+)?)|100|(\.\d+))%,\s?){2}|((([1-9]?\d(\.\d+)?)|100|(\.\d+))%\s){2})(([1-9]?\d(\.\d+)?)|100|(\.\d+))%))\)$/i;
     // tslint:disable-next-line: max-line-length
@@ -28,73 +28,173 @@ export class ColorConversion {
 
 
     if (RGB.test(color)) {
-      return color;
+      return this.RGBToRGBA(color);
     } else if (RGBA.test(color)) {
       return color;
     } else if (HSL.test(color)) {
-      return this.HLSToRGB(color);
+      return this.HSLToRGBA(color);
     } else if (HSLA.test(color)) {
-      return this.HLSAToRGBA(color);
+      return this.HSLAToRGBA(color);
     } else if (HEX.test(color)) {
-      return this.HEXToRGB(color);
+      return this.HEXToRGBA(color);
     } else {
-      throw new Error(`Color input is invalid`);
+      console.warn('Color input is invalid!');
+      return this.HEXToRGBA('#000000');
     }
   }
 
   // create secondary color to use within the animation
   static createSecondaryColor(color) {
-    console.log(color);
+    console.log('secondary color', color);
     return color;
   }
 
-  // public RGBToHex = (color) => {
-  //   const separation = color.indexOf(',') > -1 ? ',' : ' ';
-  //   color = color.substr(4).split(')')[0].split(separation);
-
-  //   // tslint:disable-next-line: forin
-  //   for (const R in color) {
-  //     const r = color[R];
-
-  //     if (r.indexOf('%') > - 1) {
-  //       color[R] = Math.round(r.substr(0, r.length - 1) / 100 * 255);
-  //     }
-  //   }
-
-  //   // tslint:disable-next-line: one-variable-per-declaration
-  //   let r = (+color[0]).toString(16);
-  //   let g = (+color[1]).toString(16);
-  //   let b = (+color[2]).toString(16);
-
-  //   if (r.length === 1) {
-  //     r = `0${r}`;
-  //   }
-
-  //   if (g.length === 1) {
-  //     g = `0${g}`;
-  //   }
-
-  //   if (b.length === 1) {
-  //     b = `0${b}`;
-  //   }
-
-  //   console.log(`#${r}${g}${b}`);
-
-  //   return `#${r}${g}${b}`;
-  // }
-
-  static HEXToRGB(color) {
-    console.log('hex', color);
-    return color;
+  static RGBToRGBA(color, alpha = 1) {
+    const [r, g, b] = color.match(/\d+/g).map(x => x);
+    return `rgba(${r},${g},${b},${alpha})`;
   }
 
-  static HLSToRGB(color) {
-    console.log('hls', color);
-    return color;
+  static HEXToRGBA(color, alpha = 1) {
+    const [r, g, b] = color.match(/\w\w/g).map(x => parseInt(x, 16));
+    return `rgba(${r},${g},${b},${alpha})`;
   }
 
-  static HLSAToRGBA(color) {
-    console.log('hlsa', color);
-    return color;
+  static HSLToRGBA(color) {
+    const separation = color.indexOf(',') > -1 ? ',' : ' ';
+    color = color.substr(4).split(')')[0].split(separation);
+
+    if (color.indexOf('/') > -1) {
+      color.splice(3, 1);
+    }
+
+    let h = color[0];
+    let s = color[1].substr(0, color[1].length - 1) / 100;
+    let l = color[2].substr(0, color[2].length - 1) / 100;
+
+    if (h.indexOf('deg') > -1) {
+      h = h.substr(0, h.length - 3);
+    } else if (h.includes('rad')) {
+      h = Math.round(h.substr(0, h.length - 3) * (180 / Math.PI));
+    } else if (h.includes('turn')) {
+      h = Math.round(h.substr(0, h.length - 4) * 360);
+    }
+
+    if (h >= 360) {
+      h %= 360;
+    }
+
+    let c = (1 - Math.abs(2 * l - 1)) * s;
+    let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+    let m = l - c / 2;
+    let r = 0;
+    let g = 0;
+    let b = 0;
+    let a = 1;
+
+    if (0 <= h && h < 60) {
+      r = c;
+      g = x;
+      b = 0;
+    } else if (60 <= h && h < 120) {
+      r = x;
+      g = c;
+      b = 0;
+    } else if (120 <= h && h < 180) {
+      r = 0;
+      g = c;
+      b = x;
+    } else if (180 <= h && h < 240) {
+      r = 0;
+      g = x;
+      b = c;
+    } else if (240 <= h && h < 300) {
+      r = x;
+      g = 0;
+      b = c;
+    } else if (300 <= h && h < 360) {
+      r = c;
+      g = 0;
+      b = x;
+    }
+
+    r = Math.round((r + m) * 255);
+    g = Math.round((g + m) * 255);
+    b = Math.round((b + m) * 255);
+
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  static HSLAToRGBA(color) {
+    const separation = color.indexOf(',') > -1 ? ',' : ' ';
+    color = color.substr(5).split(')')[0].split(separation);
+
+    if (color.indexOf('/') > -1) {
+      color.splice(3, 1);
+    }
+
+    let h = color[0];
+    let s = color[1].substr(0, color[1].length - 1) / 100;
+    let l = color[2].substr(0, color[2].length - 1) / 100;
+    let a = color[3]; 
+
+    if (h.indexOf('deg') > -1) {
+      h = h.substr(0, h.length - 3);
+    } else if (h.includes('rad')) {
+      h = Math.round(h.substr(0, h.length - 3) * (180 / Math.PI));
+    } else if (h.includes('turn')) {
+      h = Math.round(h.substr(0, h.length - 4) * 360);
+    }
+
+    if (h >= 360) {
+      h %= 360;
+    }
+
+    if (a) {
+      if (a.includes('%')) {
+        a = a.substr(0, a.length - 1) / 100;
+      }
+    } else {
+      a = 1;
+    }
+
+    let c = (1 - Math.abs(2 * l - 1)) * s;
+    let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+    let m = l - c / 2;
+    let r = 0;
+    let g = 0;
+    let b = 0;
+
+
+    if (0 <= h && h < 60) {
+      r = c;
+      g = x;
+      b = 0;
+    } else if (60 <= h && h < 120) {
+      r = x;
+      g = c;
+      b = 0;
+    } else if (120 <= h && h < 180) {
+      r = 0;
+      g = c;
+      b = x;
+    } else if (180 <= h && h < 240) {
+      r = 0;
+      g = x;
+      b = c;
+    } else if (240 <= h && h < 300) {
+      r = x;
+      g = 0;
+      b = c;
+    } else if (300 <= h && h < 360) {
+      r = c;
+      g = 0;
+      b = x;
+    }
+
+    r = Math.round((r + m) * 255);
+    g = Math.round((g + m) * 255);
+    b = Math.round((b + m) * 255);
+
+    return `rgba(${r},${g},${b},${a})`;
   }
 }
