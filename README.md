@@ -40,9 +40,9 @@ import  {  PlaceloaderModule  }  from  '@osynlig/os-placeloader';
 
 #### Presets (at the moment...)
   - content
-	- facebook
+  - facebook
   - list
-	- code
+  - code
 
 ## Properties
 
